@@ -1,6 +1,7 @@
 name: autorun
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: '0 */4 * * *'  # 每4小时执行一次
 
