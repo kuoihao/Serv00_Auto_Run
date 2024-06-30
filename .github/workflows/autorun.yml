@@ -1,0 +1,20 @@
+name: autorun
+
+on:
+  schedule:
+    - cron: '0 */4 * * *'  # 每4小时执行一次
+
+jobs:
+  ssh-and-run:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup SSH
+      uses: webfactory/ssh-agent@v0.5.3
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+    - name: Run script on remote server
+      run: ssh -o StrictHostKeyChecking=no ktech@s4.serv00.com "./run.sh"
