@@ -4,11 +4,19 @@ serv00自动启动脚本
 
 run.sh
 ```bash
+##创建run.sh脚本
+cd ~
+touch run.sh
+chmod +x run.sh
+
+##写入命令（或者自己复制进去）：
+cat << 'EOF' > run.sh
 #!/bin/sh
 ~/.npm-global/bin/pm2 kill
 pkill -kill -u 你的用户名
-cd  ~/domains && ~/.npm-global/bin/pm2 start ecosystem.config.js
+cd ~/domains && ~/.npm-global/bin/pm2 start ecosystem.config.js
 ~/.npm-global/bin/pm2 save
+EOF
 ```
 
 在 GitHub 仓库中，进入右上角Settings，在侧边栏找到Secrets and variables，点击展开选择Actions，点击New repository secret，然后创建一个名为`SSH_PRIVATE_KEY`的Secret，
