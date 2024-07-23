@@ -22,3 +22,4 @@ jobs:
 
     - name: Run script on remote server
       run: ssh -o StrictHostKeyChecking=no ktech@s4.serv00.com "./run.sh"
+      # ktech@s4.serv00.com这里换成自己的服务器名字
